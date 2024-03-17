@@ -65,7 +65,7 @@ namespace ATCGameACC
                 Y1 = Position.Y,
                 X2 = endX,
                 Y2 = endY,
-                Stroke = Brushes.Black,
+                Stroke = Brushes.GhostWhite,
                 // Adjust the stroke thickness as needed
                 StrokeThickness = 1, // Adjusted to 1
             };
@@ -76,7 +76,7 @@ namespace ATCGameACC
             TextBlock textBlock = new TextBlock
             {
                 Text = $"{Callsign} {Altitude} ft\n{Speed} kt \n {Direction}°",
-                Foreground = Brushes.Black,
+                Foreground = Brushes.White,
                 FontSize = 12,
                 Margin = new Thickness(Position.X + 5, Position.Y + 5, 0, 0) // Adjust position of text
             };

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ATCGameACC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ba9876d5f46a86bca11e76d1c15ab6c8cbe1912")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10d2bd4a14566a3c61bf8882433875f16e1a9523")]
 [assembly: System.Reflection.AssemblyProductAttribute("ATCGameACC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ATCGameACC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
