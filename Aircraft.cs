@@ -15,8 +15,10 @@ namespace ATCGameACC
         public int ExitHeight { get; set; }
         public string Callsign { get; set; }
         public Point Position { get; set; }
+        public bool IsSelected { get; set; }
 
-        private readonly double Radius = 10;
+
+        public readonly double Radius = 10;
 
         public Aircraft(double startX, double startY, int altitude, double speed, double direction, int exitHeight, string callsign)
         {
@@ -65,7 +67,7 @@ namespace ATCGameACC
             // Draw text labels for aircraft data
             TextBlock textBlock = new TextBlock
             {
-                Text = $"Altitude: {Altitude} ft\nSpeed: {Speed} m/s\nDirection: {Direction}°",
+                Text = $"{Callsign} {Altitude} ft\n{Speed} kt \n {Direction}°",
                 Foreground = Brushes.Black,
                 FontSize = 12,
                 Margin = new Thickness(Position.X + 5, Position.Y + 5, 0, 0) // Adjust position of text

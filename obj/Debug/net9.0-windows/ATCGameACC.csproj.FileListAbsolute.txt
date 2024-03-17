@@ -17,3 +17,4 @@ C:\Users\maxim\RiderProjects\ATCGameACC\ATCGameACC\obj\Debug\net9.0-windows\refi
 C:\Users\maxim\RiderProjects\ATCGameACC\ATCGameACC\obj\Debug\net9.0-windows\ATCGameACC.pdb
 C:\Users\maxim\RiderProjects\ATCGameACC\ATCGameACC\obj\Debug\net9.0-windows\ATCGameACC.genruntimeconfig.cache
 C:\Users\maxim\RiderProjects\ATCGameACC\ATCGameACC\obj\Debug\net9.0-windows\ref\ATCGameACC.dll
+C:\Users\maxim\RiderProjects\ATCGameACC\ATCGameACC\obj\Debug\net9.0-windows\ATCGameACC.sourcelink.json
