@@ -20,37 +20,23 @@ namespace ATCGameACC
         private Aircraft selectedAircraft;
         
         public MainWindow()
-        {
-            InitializeComponent(); // Initialize the MainWindow components
-            
-// Initialize game-related elements
+        { InitializeComponent(); // Initialize the MainWindow components
+
+            // Initialize game-related elements
             InitializeRoutes();
             InitializeAirlineCodes();
             InitializeGameTimer();
             GenerateRandomCallsign();
             AddAircraft();
 
-// Add event handlers and set focus
+            // Add event handlers and set focus
             AddAircraftButton_OnClick(null, null);
-           
-           
-            
             GameCanvas.MouseLeftButtonDown += GameCanvas_MouseLeftButtonDown;
             this.KeyDown += MainWindow_KeyDown;
             this.Focus(); // Ensure MainWindow has focus for key events
 
-// Check for collisions and update game state
-            CheckCollisions(); // Implement this method to check for collisions between aircraft
-            UpdateGameState(); // Implement this method to update the game state based on events
-
-// Redraw the canvas to reflect the updated game state
-            UpdateCanvas();
-
-// Update the game logic
-            UpdateGame(gameTimer.Interval.TotalMilliseconds);
-            
-            
-            
+            // Initialize selectedAircraft
+            selectedAircraft = null; // or any other appropriate ini
         }
 
         private void GameCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -83,13 +69,13 @@ namespace ATCGameACC
                 if (e.Key == Key.Up)
                 {
                     // Increase altitude by 2000 ft, rounded to the nearest thousand, and ensure no decimals
-                    selectedAircraft.Altitude = (int)Math.Round(selectedAircraft.Altitude / 1000.0) * 1000 + 2000;
+                    selectedAircraft.Altitude = ((int)Math.Round(selectedAircraft.Altitude / 1000.0) + 2) * 1000;
                     Console.WriteLine("Altitude +");
                 }
                 else if (e.Key == Key.Down)
                 {
                     // Decrease altitude by 2000 ft, rounded to the nearest thousand, and ensure no decimals
-                    selectedAircraft.Altitude = (int)Math.Round(selectedAircraft.Altitude / 1000.0) * 1000 - 2000;
+                    selectedAircraft.Altitude = ((int)Math.Round(selectedAircraft.Altitude / 1000.0) - 2) * 1000;
                     Console.WriteLine("Altitude -");
                 }
                 // Handle speed adjustment
@@ -196,11 +182,11 @@ namespace ATCGameACC
 
         private bool AircraftsCollided(Aircraft aircraft1, Aircraft aircraft2)
         {
-            // Implement collision detection logic here
-            // For example, you can check if the distance between the aircrafts is less than a certain threshold
-            // If the distance is less than the threshold, consider it a collision
+            // Calculate the distance between the two aircraft
             double distance = Math.Sqrt(Math.Pow(aircraft1.X - aircraft2.X, 2) + Math.Pow(aircraft1.Y - aircraft2.Y, 2));
-            return distance < (2 * aircraft1.Radius); // Considered a collision if the distance is less than twice the radius of an aircraft
+
+            // Check if the distance is less than twice the radius of an aircraft
+            return distance < (2 * aircraft1.Radius);
         }
 
         private void UpdateGameState()
