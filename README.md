@@ -1,1 +1,1 @@
-open first folder and execute the file with the ending .exe
+open first folder (bin) and execute the file with the ending .exe
