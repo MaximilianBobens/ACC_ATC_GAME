@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+      <None Update="LOVV_CTR.PNG">
+        <DependentUpon>MainWindow.xaml</DependentUpon>
+      </None>
+      <None Update="LOVV_S_CTR.PNG">
+        <DependentUpon>MainWindow.xaml</DependentUpon>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Aircraft.cs">
+        <DependentUpon>MainWindow.xaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>
