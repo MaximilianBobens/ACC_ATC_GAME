@@ -15,7 +15,7 @@ namespace ATCGameACC
         public int ExitHeight { get; set; }
         public string Callsign { get; set; }
         public Point Position { get; set; }
-        public bool IsSelected { get; set; }
+        public bool IsSelected { get; private set; }
 
 
         public readonly double Radius = 10;
@@ -31,7 +31,15 @@ namespace ATCGameACC
             Callsign = callsign;
             Position = new Point(startX, startY);
         }
+        public void Select()
+        {
+            IsSelected = true;
+        }
 
+        public void Deselect()
+        {
+            IsSelected = false;
+        }
         public void Draw(Canvas canvas)
         {
             // Check if position is valid

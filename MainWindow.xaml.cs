@@ -21,29 +21,34 @@ namespace ATCGameACC
         
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); // Initialize the MainWindow components
             
+// Initialize game-related elements
             InitializeRoutes();
             InitializeAirlineCodes();
             InitializeGameTimer();
             GenerateRandomCallsign();
             AddAircraft();
-          
+
+// Add event handlers and set focus
             AddAircraftButton_OnClick(null, null);
-            lastTickTime = DateTime.Now;
-            GameCanvas.MouseLeftButtonDown += GameCanvas_MouseLeftButtonDown;
-            // Add event handler for key down
-            this.KeyDown += MainWindow_KeyDown;
-            this.Focus();
+           
+           
             
+            GameCanvas.MouseLeftButtonDown += GameCanvas_MouseLeftButtonDown;
+            this.KeyDown += MainWindow_KeyDown;
+            this.Focus(); // Ensure MainWindow has focus for key events
+
+// Check for collisions and update game state
             CheckCollisions(); // Implement this method to check for collisions between aircraft
             UpdateGameState(); // Implement this method to update the game state based on events
 
 // Redraw the canvas to reflect the updated game state
             UpdateCanvas();
-          
-            UpdateCanvas();
+
+// Update the game logic
             UpdateGame(gameTimer.Interval.TotalMilliseconds);
+            
             
             
         }
@@ -58,7 +63,10 @@ namespace ATCGameACC
                 if (IsPointWithinAircraft(clickPoint, aircraft))
                 {
                     // Toggle selection
-                    aircraft.IsSelected = !aircraft.IsSelected;
+                    if (aircraft.IsSelected)
+                        aircraft.Deselect();
+                    else
+                        aircraft.Select();
                     break; // No need to check further
                 }
             }
@@ -74,20 +82,26 @@ namespace ATCGameACC
                 // Handle altitude adjustment
                 if (e.Key == Key.Up)
                 {
-                    selectedAircraft.Altitude += 1000; // Increase altitude by 1000 ft
+                    // Increase altitude by 2000 ft, rounded to the nearest thousand, and ensure no decimals
+                    selectedAircraft.Altitude = (int)Math.Round(selectedAircraft.Altitude / 1000.0) * 1000 + 2000;
+                    Console.WriteLine("Altitude +");
                 }
                 else if (e.Key == Key.Down)
                 {
-                    selectedAircraft.Altitude -= 1000; // Decrease altitude by 1000 ft
+                    // Decrease altitude by 2000 ft, rounded to the nearest thousand, and ensure no decimals
+                    selectedAircraft.Altitude = (int)Math.Round(selectedAircraft.Altitude / 1000.0) * 1000 - 2000;
+                    Console.WriteLine("Altitude -");
                 }
                 // Handle speed adjustment
                 else if (e.Key == Key.Left)
                 {
                     selectedAircraft.Speed -= 10; // Decrease speed by 10 knots
+                    Console.WriteLine("speed -");
                 }
                 else if (e.Key == Key.Right)
                 {
                     selectedAircraft.Speed += 10; // Increase speed by 10 knots
+                    Console.WriteLine("speed +");
                 }
 
                 // Redraw canvas
